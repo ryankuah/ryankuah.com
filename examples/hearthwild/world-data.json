@@ -1,0 +1,276 @@
+{
+  "meta": {
+    "name": "The Hearthwild",
+    "subtitle": "A broad realm from frozen heights to sun-scorched lowlands",
+    "seed": "PW-HEARTH-0412",
+    "width": 8192,
+    "height": 8192,
+    "gridSize": 128,
+    "biomeSampleSize": 4,
+    "minBiomePatchArea": 200000,
+    "seaLevel": 63,
+    "spawn": [4028, 4428],
+    "initialView": { "x": 4096, "z": 4096, "span": 5600 }
+  },
+  "biomes": [
+    {
+      "id": "amber_meadows",
+      "name": "Amber Meadows",
+      "color": "#96b96c",
+      "ink": "#535735",
+      "texture": "meadow",
+      "description": "The welcoming heart of the realm: broad treeless grazing country, gentle ridges, wildflower banks, and open eastern plains around the central spawn.",
+      "climate": "Mild · Breezy",
+      "terrain": "Rolling central grassland",
+      "ground": ["Grass", "Coarse dirt", "Wildflowers"],
+      "flora": ["Tall grass", "Wildflowers", "Low scrub"],
+      "blocks": [
+        { "id": "minecraft:grass_block", "color": "#7f9b53", "weight": 66, "role": "surface" },
+        { "id": "minecraft:coarse_dirt", "color": "#76553a", "weight": 12, "role": "dry patches" },
+        { "id": "minecraft:dirt_path", "color": "#9b7b4f", "weight": 8, "role": "animal tracks" },
+        { "id": "minecraft:short_grass", "color": "#6f8f46", "weight": 8, "role": "ground cover" },
+        { "id": "minecraft:oxeye_daisy", "color": "#ded8ae", "weight": 3, "role": "flowers" },
+        { "id": "minecraft:dandelion", "color": "#d5b544", "weight": 3, "role": "flowers" }
+      ],
+      "regions": [
+        { "x": 4100, "z": 4140, "radiusX": 1860, "radiusZ": 1300, "weight": 1.08 },
+        { "x": 2240, "z": 4260, "radiusX": 1400, "radiusZ": 1220, "weight": 0.86 },
+        { "x": 5840, "z": 4260, "radiusX": 1420, "radiusZ": 1200, "weight": 0.88 },
+        { "x": 4080, "z": 3080, "radiusX": 1340, "radiusZ": 860, "weight": 0.76 },
+        { "x": 4100, "z": 5140, "radiusX": 1640, "radiusZ": 720, "weight": 0.70 },
+        { "x": 1080, "z": 4660, "radiusX": 780, "radiusZ": 840, "weight": 0.66 },
+        { "x": 6920, "z": 4720, "radiusX": 780, "radiusZ": 860, "weight": 0.82 },
+        { "x": 6900, "z": 5720, "radiusX": 900, "radiusZ": 860, "weight": 1.22 }
+      ]
+    },
+    {
+      "id": "elderpine_wood",
+      "name": "Elderpine Wood",
+      "color": "#1f6338",
+      "ink": "#263c2b",
+      "texture": "forest",
+      "description": "A compact, dense dark forest tucked into the cool northwestern foothills, broken by plains fingers along its eastern edge.",
+      "climate": "Cool · Damp",
+      "terrain": "Dense northwestern dark forest",
+      "ground": ["Grass", "Moss", "Fern beds"],
+      "flora": ["Dark oak", "Oak", "Mushrooms"],
+      "blocks": [
+        { "id": "minecraft:grass_block", "color": "#557442", "weight": 60, "role": "forest floor" },
+        { "id": "minecraft:moss_block", "color": "#5f7433", "weight": 12, "role": "damp floor" },
+        { "id": "minecraft:dark_oak_leaves", "color": "#31533d", "weight": 17, "role": "canopy" },
+        { "id": "minecraft:dark_oak_log", "color": "#3e2d1d", "weight": 4, "role": "trunks" },
+        { "id": "minecraft:fern", "color": "#3f6737", "weight": 7, "role": "ground cover" }
+      ],
+      "regions": [
+        { "x": 1300, "z": 2740, "radiusX": 1300, "radiusZ": 1020, "weight": 0.96 },
+        { "x": 600, "z": 3540, "radiusX": 860, "radiusZ": 1000, "weight": 0.84 },
+        { "x": 2060, "z": 3100, "radiusX": 780, "radiusZ": 760, "weight": 0.72 },
+        { "x": 1040, "z": 4200, "radiusX": 720, "radiusZ": 700, "weight": 0.62 }
+      ]
+    },
+    {
+      "id": "silver_birch_forest",
+      "name": "Silver Birch Forest",
+      "color": "#69a35e",
+      "ink": "#3f5e49",
+      "texture": "birch",
+      "description": "A compact northeastern birch forest with several detached woodland patches scattered through the surrounding plains.",
+      "climate": "Mild · Sheltered",
+      "terrain": "Small scattered birch forest",
+      "ground": ["Grass", "Dirt", "Leaf litter"],
+      "flora": ["Silver birch", "Fern", "Wildflowers"],
+      "blocks": [
+        { "id": "minecraft:grass_block", "color": "#75945b", "weight": 52, "role": "forest floor" },
+        { "id": "minecraft:dirt", "color": "#76553a", "weight": 15, "role": "bare ground" },
+        { "id": "minecraft:birch_leaves", "color": "#6f9454", "weight": 20, "role": "canopy" },
+        { "id": "minecraft:birch_log", "color": "#d1cda8", "weight": 5, "role": "trunks" },
+        { "id": "minecraft:fern", "color": "#4f713f", "weight": 8, "role": "ground cover" }
+      ],
+      "regions": [
+        { "x": 6500, "z": 2800, "radiusX": 500, "radiusZ": 440, "weight": 1.35 },
+        { "x": 5100, "z": 3600, "radiusX": 330, "radiusZ": 290, "weight": 1.65 },
+        { "x": 7300, "z": 4000, "radiusX": 330, "radiusZ": 290, "weight": 1.65 },
+        { "x": 6100, "z": 4700, "radiusX": 330, "radiusZ": 290, "weight": 1.65 }
+      ]
+    },
+    {
+      "id": "sunscar_desert",
+      "name": "Sunscar Desert",
+      "color": "#d19a4c",
+      "ink": "#684225",
+      "texture": "desert",
+      "description": "A vast southern desert of dunes, ochre flats, rocky shelves, and occasional dry washes that stretches east into sandy ocean coves.",
+      "climate": "Hot · Arid",
+      "terrain": "Raised desert basin",
+      "ground": ["Sand", "Sandstone", "Terracotta"],
+      "flora": ["Dead bush", "Cactus", "Dry scrub"],
+      "blocks": [
+        { "id": "minecraft:sand", "color": "#d8c27a", "weight": 44, "role": "dunes and flats" },
+        { "id": "minecraft:sandstone", "color": "#d2b66d", "weight": 20, "role": "shelves" },
+        { "id": "minecraft:red_sand", "color": "#b86632", "weight": 12, "role": "ochre pockets" },
+        { "id": "minecraft:terracotta", "color": "#985e43", "weight": 10, "role": "hardpan" },
+        { "id": "minecraft:cactus", "color": "#4f7436", "weight": 5, "role": "sparse growth" },
+        { "id": "minecraft:dead_bush", "color": "#755a33", "weight": 9, "role": "scrub" }
+      ],
+      "regions": [
+        { "x": 600, "z": 7220, "radiusX": 1520, "radiusZ": 1360, "weight": 1.18 },
+        { "x": 2060, "z": 7140, "radiusX": 1520, "radiusZ": 1300, "weight": 1.20 },
+        { "x": 3600, "z": 7180, "radiusX": 1560, "radiusZ": 1340, "weight": 1.22 },
+        { "x": 5040, "z": 7140, "radiusX": 1440, "radiusZ": 1300, "weight": 1.20 },
+        { "x": 5840, "z": 7320, "radiusX": 1220, "radiusZ": 1240, "weight": 1.12 },
+        { "x": 1800, "z": 6360, "radiusX": 1040, "radiusZ": 720, "weight": 0.86 },
+        { "x": 4100, "z": 6400, "radiusX": 1200, "radiusZ": 760, "weight": 0.90 },
+        { "x": 5640, "z": 6380, "radiusX": 940, "radiusZ": 720, "weight": 0.84 },
+        { "x": 7000, "z": 6500, "radiusX": 1050, "radiusZ": 850, "weight": 1.36 },
+        { "x": 7200, "z": 7600, "radiusX": 1100, "radiusZ": 1100, "weight": 1.42 }
+      ]
+    },
+    {
+      "id": "sunken_coast",
+      "name": "Sunken Coast",
+      "color": "#173f9b",
+      "ink": "#31545a",
+      "texture": "water",
+      "description": "A continuous narrow eastern ocean of rocky northern inlets and sandy southern coves, bordered by plains and birch forest in the north and desert in the south.",
+      "climate": "Mild · Maritime",
+      "terrain": "Narrow inlets and shore",
+      "ground": ["Gravel", "Sand", "Seagrass"],
+      "flora": ["Kelp", "Sea grass", "Coastal scrub"],
+      "blocks": [
+        { "id": "minecraft:water", "color": "#3d7187", "weight": 54, "role": "sea" },
+        { "id": "minecraft:sand", "color": "#d4c58b", "weight": 18, "role": "southern coves" },
+        { "id": "minecraft:gravel", "color": "#817e78", "weight": 11, "role": "northern beaches" },
+        { "id": "minecraft:stone", "color": "#747a78", "weight": 8, "role": "cliffs" },
+        { "id": "minecraft:seagrass", "color": "#2e695a", "weight": 6, "role": "shallows" },
+        { "id": "minecraft:kelp", "color": "#2b5945", "weight": 3, "role": "deep water" }
+      ],
+      "regions": [
+        { "x": 8080, "z": 520, "radiusX": 940, "radiusZ": 1040, "weight": 1.42 },
+        { "x": 8040, "z": 1800, "radiusX": 940, "radiusZ": 1200, "weight": 1.42 },
+        { "x": 7960, "z": 3200, "radiusX": 860, "radiusZ": 1300, "weight": 1.30 },
+        { "x": 7960, "z": 4800, "radiusX": 840, "radiusZ": 1360, "weight": 1.22 },
+        { "x": 8000, "z": 6400, "radiusX": 860, "radiusZ": 1360, "weight": 1.22 },
+        { "x": 8100, "z": 7880, "radiusX": 920, "radiusZ": 1200, "weight": 1.22 }
+      ]
+    },
+    {
+      "id": "greyrock_foothills",
+      "name": "Greyrock Foothills",
+      "color": "#777b70",
+      "ink": "#3d413c",
+      "texture": "mountain",
+      "description": "A very thin, treeless ribbon of scree, exposed stone, lichen, and descending ridges directly beneath the Frostcap snowline, ending cleanly at the eastern cliffs.",
+      "climate": "Cold · Wind-scoured",
+      "terrain": "Very thin treeless stony-peaks buffer",
+      "ground": ["Stone", "Gravel", "Coarse dirt"],
+      "flora": ["Lichen", "Alpine grass", "Moss"],
+      "blocks": [
+        { "id": "minecraft:stone", "color": "#777876", "weight": 45, "role": "exposed ground" },
+        { "id": "minecraft:gravel", "color": "#827f79", "weight": 28, "role": "scree" },
+        { "id": "minecraft:andesite", "color": "#878b89", "weight": 16, "role": "broken ridges" },
+        { "id": "minecraft:coarse_dirt", "color": "#76553a", "weight": 6, "role": "sheltered pockets" },
+        { "id": "minecraft:moss_block", "color": "#607b39", "weight": 5, "role": "lichen beds" }
+      ],
+      "regions": [
+        { "x": 520, "z": 1180, "radiusX": 1120, "radiusZ": 140, "weight": 1.10 },
+        { "x": 1700, "z": 1140, "radiusX": 1140, "radiusZ": 130, "weight": 1.12 },
+        { "x": 2920, "z": 1180, "radiusX": 1140, "radiusZ": 140, "weight": 1.14 },
+        { "x": 4140, "z": 1140, "radiusX": 1180, "radiusZ": 140, "weight": 1.15 },
+        { "x": 5380, "z": 1180, "radiusX": 1140, "radiusZ": 140, "weight": 1.14 },
+        { "x": 6620, "z": 1140, "radiusX": 1140, "radiusZ": 130, "weight": 1.12 },
+        { "x": 7100, "z": 1180, "radiusX": 520, "radiusZ": 120, "weight": 1.00 }
+      ]
+    },
+    {
+      "id": "frostcap_range",
+      "name": "Frostcap Range",
+      "color": "#b9c2b7",
+      "ink": "#4f5752",
+      "texture": "mountain",
+      "description": "A compact row of pale cliffs, snowfields, and knife-edge summits running across the far north above the Greyrock buffer.",
+      "climate": "Alpine · Severe",
+      "terrain": "Compact northern mountain row",
+      "ground": ["Stone", "Snow", "Scree"],
+      "flora": ["Dwarf pine", "Lichen", "Alpine grass"],
+      "blocks": [
+        { "id": "minecraft:stone", "color": "#7b7d7c", "weight": 42, "role": "mountain face" },
+        { "id": "minecraft:snow_block", "color": "#e7ece9", "weight": 23, "role": "snowfields" },
+        { "id": "minecraft:gravel", "color": "#827f79", "weight": 12, "role": "scree" },
+        { "id": "minecraft:calcite", "color": "#d7d4c7", "weight": 8, "role": "pale cliffs" },
+        { "id": "minecraft:packed_ice", "color": "#79a9c2", "weight": 7, "role": "ice pockets" },
+        { "id": "minecraft:spruce_leaves", "color": "#365340", "weight": 8, "role": "dwarf pine" }
+      ],
+      "regions": [
+        { "x": 440, "z": 440, "radiusX": 1040, "radiusZ": 410, "weight": 1.22 },
+        { "x": 1640, "z": 480, "radiusX": 1080, "radiusZ": 430, "weight": 1.24 },
+        { "x": 2860, "z": 430, "radiusX": 1080, "radiusZ": 410, "weight": 1.25 },
+        { "x": 4080, "z": 480, "radiusX": 1120, "radiusZ": 430, "weight": 1.26 },
+        { "x": 5320, "z": 430, "radiusX": 1080, "radiusZ": 410, "weight": 1.25 },
+        { "x": 6540, "z": 480, "radiusX": 1080, "radiusZ": 430, "weight": 1.24 },
+        { "x": 7260, "z": 440, "radiusX": 620, "radiusZ": 410, "weight": 1.22 }
+      ]
+    }
+  ],
+  "pointsOfInterest": [
+    {
+      "id": "village_hearthcross",
+      "name": "Hearthcross",
+      "type": "village",
+      "x": 4042,
+      "z": 4058,
+      "status": "Planned",
+      "summary": "The first authored village: a welcoming central settlement within an easy walk of the world spawn.",
+      "notes": "Phase 1. Place the planner-wand centre at Minecraft X -54, Z -38 and face north. Keep an 80-block radius clear for the square, inn, smithy, internal roads, and farmsteads. The site is about 370 blocks from spawn."
+    },
+    {
+      "id": "village_elderpine_gate",
+      "name": "Elderpine Gate",
+      "type": "village",
+      "x": 2714,
+      "z": 4022,
+      "status": "Planned",
+      "summary": "A western meadow village at the threshold of the dark Elderpine woods.",
+      "notes": "Phase 1. Place the centre at Minecraft X -1382, Z -74 and face west. The footprint stays on open plains so the farms remain usable without cutting a settlement-sized clearing into Elderpine. Reserve an 80-block radius."
+    },
+    {
+      "id": "village_birchwatch",
+      "name": "Birchwatch",
+      "type": "village",
+      "x": 6096,
+      "z": 3658,
+      "status": "Planned",
+      "summary": "An eastern plains village overlooking the scattered silver-birch woodland.",
+      "notes": "Phase 1. Place the centre at Minecraft X 2000, Z -438 and face west. The nearby birch forest gives the village a regional identity while its complete footprint remains on viable open farmland. Reserve an 80-block radius."
+    },
+    {
+      "id": "village_southmeadow",
+      "name": "Southmeadow",
+      "type": "village",
+      "x": 4026,
+      "z": 5498,
+      "status": "Planned",
+      "summary": "A farming village in the sunflower plains where the mild heartland begins to give way to Sunscar.",
+      "notes": "Phase 1. Place the centre at Minecraft X -70, Z 1402 and face south. This is the principal agricultural settlement and southern staging point. Reserve an 80-block radius."
+    },
+    {
+      "id": "village_eastmere",
+      "name": "Eastmere",
+      "type": "village",
+      "x": 6834,
+      "z": 4610,
+      "status": "Reserved",
+      "summary": "A future inland coastal village serving the eastern shore without intruding into the Sunken Coast.",
+      "notes": "Phase 2. Place the centre at Minecraft X 2738, Z 514 and face west. The site is safely inland from the fluid boundary while remaining close enough to anchor later coastal content. Reserve an 80-block radius."
+    },
+    {
+      "id": "village_sunscar_wells",
+      "name": "Sunscar Wells",
+      "type": "village",
+      "x": 6100,
+      "z": 6674,
+      "status": "Reserved",
+      "summary": "A future desert settlement in the open Sunscar basin.",
+      "notes": "Phase 2. Place the centre at Minecraft X 2004, Z 2578 and face south. Hold placement until desert-specific village architecture can replace the generic oak blockout. The terrain supports every possible farm arm; reserve an 80-block radius."
+    }
+  ]
+}

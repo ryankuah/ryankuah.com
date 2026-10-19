@@ -1,0 +1,369 @@
+.showcase {
+  container-type: inline-size;
+  margin-top: 26px;
+  color: #e7ece8;
+  font-family: var(--font-sans);
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 18px;
+  font-size: 10px;
+  color: #a6afa9;
+}
+.toolbar > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.toolbar i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f3d09b;
+}
+.showcase button {
+  cursor: pointer;
+  font: inherit;
+}
+.toolbar button {
+  color: #e3d1b6;
+  border: 1px solid #ffffff20;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.showcase button:hover {
+  background: #ffffff0e;
+}
+.showcase button:focus-visible {
+  outline: 2px solid #f3d09b;
+  outline-offset: 3px;
+}
+.section {
+  padding: 23px 0;
+  border-top: 1px solid #ffffff13;
+}
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.sectionHeading > span {
+  color: #9b8260;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.sectionHeading h3 {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.section p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: #a6afa9;
+  margin-top: 16px;
+  max-width: 75ch;
+}
+.showcase h4 {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: #a6afa9;
+  font-weight: 500;
+}
+.inputs {
+  display: grid;
+  grid-template-columns: 75px minmax(90px, 0.8fr) minmax(160px, 1.5fr);
+  gap: 23px;
+  align-items: center;
+  padding: 5px 0 10px;
+}
+.steering {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.wheel {
+  display: grid;
+  width: 65px;
+  height: 65px;
+  place-items: center;
+  border: 1px solid #ffffff0e;
+  border-radius: 50%;
+  background: #101312;
+  margin-bottom: 6px;
+}
+.steering > span,
+.rpmReadout > span,
+.powertrain span,
+.scale,
+.meter span {
+  font-size: 10px;
+  color: #a6afa9;
+}
+.showcase strong {
+  font-variant-numeric: tabular-nums;
+}
+.steering strong {
+  color: #f3d09b;
+  font-size: 13px;
+}
+.pedals {
+  display: grid;
+  gap: 19px;
+}
+.meter > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.meter strong {
+  font-size: 11px;
+}
+.meterTrack {
+  height: 6px;
+  border-radius: 2px;
+  background: #ffffff0b;
+  overflow: hidden;
+}
+.meterTrack i {
+  display: block;
+  height: 100%;
+}
+.engine {
+  border-left: 1px solid #ffffff0e;
+  padding-left: 20px;
+  min-width: 0;
+}
+.rpmReadout {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.rpmReadout strong {
+  font-size: 22px;
+  letter-spacing: -0.04em;
+}
+.showcase small {
+  font-size: 10px;
+  font-weight: 400;
+  color: #a6afa9;
+  letter-spacing: 0;
+}
+.rpmTrack {
+  position: relative;
+  height: 30px;
+  margin-inline: 3px;
+  background: #101312;
+  border-block: 1px solid #ffffff0d;
+}
+.rpmTrack i {
+  position: absolute;
+  height: 12px;
+  top: 8px;
+  width: 1px;
+  background: #ffffff30;
+}
+.rpmTrack i:nth-child(4n + 1) {
+  height: 22px;
+  top: 3px;
+}
+.rpmTrack b {
+  position: absolute;
+  width: 3px;
+  top: 2px;
+  bottom: 2px;
+  background: #f3d09b;
+  box-shadow: 0 0 14px #f3d09b50;
+}
+.scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 8px;
+}
+.powertrain {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 17px;
+}
+.powertrain div {
+  display: grid;
+  gap: 4px;
+}
+.powertrain strong {
+  font-size: 12px;
+}
+.chassis {
+  display: grid;
+  grid-template-columns: 0.9fr 1.3fr;
+  gap: 24px;
+  align-items: center;
+}
+.springs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 19px;
+  gap: 6px;
+}
+.springs > div {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+}
+.springs span {
+  font-size: 9px;
+  color: #a6afa9;
+}
+.springs svg {
+  width: 38px;
+  height: 83px;
+}
+.springs strong {
+  font-size: 11px;
+}
+.attitude {
+  min-width: 0;
+}
+.attitude svg {
+  width: 100%;
+  max-height: 170px;
+  margin-top: 14px;
+}
+.showcase svg text {
+  fill: #a6afa9;
+  font-size: 11px;
+  text-anchor: middle;
+  font-variant-numeric: tabular-nums;
+}
+.balanceControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 19px;
+}
+.balanceControls button {
+  padding: 8px 12px;
+  font-size: 11px;
+  color: #a6afa9;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.balanceControls button[aria-pressed="true"] {
+  color: #f3d09b;
+  background: #f3d09b0a;
+  border-color: #f3d09b33;
+}
+.analysis {
+  display: grid;
+  grid-template-columns: 0.85fr 1.4fr;
+  gap: 26px;
+  align-items: center;
+  margin-top: 20px;
+}
+.analysis svg {
+  width: 100%;
+  max-height: 210px;
+}
+.trace h4 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px;
+}
+.trace h4 span {
+  font-size: 8px;
+  color: #909b94;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 9px;
+  color: #a6afa9;
+}
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.legend i {
+  display: inline-block;
+  width: 12px;
+  height: 2px;
+}
+.explanation {
+  padding: 14px 17px;
+  border-left: 2px solid #f3d09b66;
+  background: #f3d09b05;
+  margin-top: 24px;
+}
+.explanation > strong {
+  font-size: 12px;
+  font-weight: 500;
+  color: #f3d09b;
+}
+.explanation p {
+  margin-top: 5px;
+}
+.phases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 23px;
+}
+.phases h4 {
+  color: #e7ece8;
+  font-size: 11px;
+}
+.phases p {
+  margin-top: 7px;
+  font-size: 11px;
+}
+.section .note {
+  color: #939d96;
+  font-size: 11px;
+  margin-top: 22px;
+}
+@container (max-width: 460px) {
+  .inputs {
+    grid-template-columns: 75px 1fr;
+    gap: 20px;
+  }
+  .engine {
+    grid-column: 1 / -1;
+    padding: 18px 0 0;
+    border-left: 0;
+    border-top: 1px solid #ffffff0e;
+  }
+  .chassis,
+  .analysis {
+    grid-template-columns: 1fr;
+  }
+  .springs {
+    justify-content: space-around;
+  }
+  .attitude svg {
+    max-height: 170px;
+  }
+  .corner svg {
+    max-height: 180px;
+  }
+  .corner .legend {
+    justify-content: center;
+  }
+  .phases {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}

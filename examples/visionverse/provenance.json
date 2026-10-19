@@ -1,0 +1,63 @@
+{
+  "html": {
+    "commit": "99e00baddc78d2c6be2acccc0254b6988af86dbb",
+    "files": {
+      "src/app/edit/[quizid]/page.tsx": "0815abfe2a5f0a4e2f3b1f7a748deac4f4dc0bfc3b72a4cc02089e2c92f7ce59",
+      "src/components/ui/button.tsx": "c2b999a96781e6c932632bd089095368e973bf5602e1b1a62156b7d2b43f1e84",
+      "src/lib/utils.ts": "1f32ce03d45860048d4e8295adced0b7db45a4a5f621bb83ca14b6b2c9fd9a5c",
+      "src/quizContext.tsx": "029bf26c6ac6c4e2712d4b0e30555c2343ca7673ebf0d91f20bcadba36951b6b",
+      "src/types/types.ts": "1cbd0ee1e4ff522cb1109c44dda8294f9f70474ebca5c9448789e6b725ced7b2",
+      "src/app/edit/[quizid]/Editor.tsx": "0a8bb448bf9e6317064d381ac37357840275cb8eeb61a4e1bba7481306ab4e88",
+      "src/templateContext.tsx": "502be2c86d2ae9fa1dc5343dcef458b0b67dec5ebfa7c3ced9829fbd11c2123d",
+      "src/components/ui/popover.tsx": "69f74cdd76588a1249522ff8009e044eee6080ad8cf26cb08d7a5fc3281f0255",
+      "src/components/ui/background-controls.tsx": "ed0cf1f7168e649f3c631a9dfbf89701ac4f1ffe7562e7f2bd19be63124c664b",
+      "src/components/ui/input.tsx": "6299a6a387dc55e528aec4342deaea0b83f1ea3a365c135a31a18ee55334f441",
+      "src/components/ui/label.tsx": "2eac8fbb04002c42b0fbc4062d20d131e421796eaf65c37d2049e29e42ecbc5a",
+      "src/components/SingleImageUpload.tsx": "57cb603e383b1db69b0fbbbb5b205eb40209589f9d97a275ca9f9dcaf1f09915",
+      "src/app/edit/[quizid]/ComponentEditor.tsx": "7308f889d75438d5b7baaced0ef9ce0e95f2b6fddb3f1cd8ea678a785258ef6c",
+      "src/components/ui/toggle-group.tsx": "9db7a3b50e449ea66c3c718c180e0f0be8e872431fa3a806857842f42cf941db",
+      "src/components/ui/toggle.tsx": "fb6061098e0368d9119905d6ed3c5ed2704b75078c4ad2c71b16b29f98a42ace",
+      "src/components/ui/select.tsx": "0aabbe9f33da061c29dfe33b513c714c7fdc82d6d8c1a0042230e6429fa46d79",
+      "src/app/edit/[quizid]/TemplateSelector.tsx": "a7daee8f1bf17f197b1109c68edb2ee6571e820ce494c80031bb7a21dcf1e679",
+      "src/components/renderers/ComponentRenderer.tsx": "adcca3431e5ce4f606d5477d6bc85581adbb18cfbb067d36bf720950be9c5ff7",
+      "src/playContext.tsx": "21dfb0cd672e67bb88f0465b31ca0e9e5163aa431866289766f862a9bcd7f95b",
+      "src/app/edit/[quizid]/preview.tsx": "e18cd097d3c1d3500f2524b35536b6344bcdd4a4c50f472529a3edb1dd057393",
+      "src/components/renderers/Renderer.tsx": "96b1626bd4beab4688fbac94d4c06dcf116cac8806b5313fcb0db4a41b3e9437",
+      "src/styles/globals.css": "9e71db6189fbdd4b404508762002effd8022de5cc93dda81575bedac9e4c3205",
+      "tailwind.config.ts": "c80f69c8c417fd0b112e062e177745fba826be3383d4df4110b3f721405f86e7"
+    },
+    "adapters": [
+      "src/actions/quiz",
+      "src/actions/template",
+      "src/lib/uploadthing"
+    ]
+  },
+  "fabric": {
+    "commit": "04d5a6f13d82527dfaea7f8a24eb72b0c76fb2c3",
+    "files": {
+      "src/components/editor/FabricSceneEditor.tsx": "f12b3d41bd50f36b91b737c0000a3ad264548303596a3461ddce3ad012f309f0",
+      "src/components/editor/FabricBackgroundMenu.tsx": "3fec02f7e62c29eac18c05d8174fff58d96be1b0006a8af2e1d1a86f0245c78e",
+      "shared/fabricScene.ts": "e209803c9c284f76b9f6c705f6f039fefe5fdda14e79363cbcb567fabc74d7f2",
+      "src/components/editor/fabricAnswerStates.ts": "c62254e84dc9e930758f793383411e208562cbfa8532e700753b9d845fd18930",
+      "src/components/editor/fabricEditorTypes.ts": "2ea94e51800ef58b5cdecf23beff004d1d397ee06e2e51102d804e2f8d03bf2c",
+      "src/components/editor/fabricEditorUtils.ts": "dc7feb042f2a5ee744b4cec9f3a4f464e024359d3bb6eb3a812605dfc7a74a13",
+      "src/lib/fontRegistry.ts": "62d7606f9f292368bb2fc384c1eb779ec1d9235fba851915d62990ccc57c5a6b",
+      "src/components/editor/fabricEditorConfig.ts": "728ae8fa7e37624ee0a71d72cb478ad9555fe5bdd329a619eec57a2eef2ec3ad",
+      "src/components/editor/FabricEditorLayerPanel.tsx": "1f92aa48bc2dfea098ec4bdc89b8a049ff75af9f4f1e718901a48c063a384874",
+      "src/lib/utils.ts": "1f32ce03d45860048d4e8295adced0b7db45a4a5f621bb83ca14b6b2c9fd9a5c",
+      "src/components/editor/FabricEditorToolDock.tsx": "eb6aea689e3b2320557e43839c8f623663202d005a4b79a264628cefbf07f709",
+      "src/components/ui/popover.tsx": "49ef62ea5db0b46e8dbbf438b81f23915a6ffdc8089548e35570fc5e07fee069",
+      "src/components/editor/FabricSelectionMenu.tsx": "99e9a1eef1ba91ae9adba3c0cd1fb3fe8153026870f45737b4362779c23d8a43",
+      "src/components/editor/FontFamilyPicker.tsx": "78492f9a3b648ec56169e50ca4435f37150195e736feb8171498037c430cc3e8",
+      "src/components/editor/fabricSelection.ts": "2c70b53225beed0b262dc8b95b229583815c7f4801ffd2a7c7f3f69d96cd1909",
+      "src/lib/figmaImport.ts": "0575f06bf5d2eca63c682b99a9a3d900f943415bb7da8e9dae4b6d84182780fb",
+      "src/lib/fabricSetup.ts": "f190c61e735b3d1398b9d5eda31e42ea2c553a321c22176451fad94259defd99",
+      "src/components/editor/fabricPenPath.ts": "9f841419f7ba3babf6b11b353862a329767f250a95d8615acc201183731ce2c6",
+      "src/types/index.ts": "95c26d2e2f0d1505e3bf77ad201af08aaad79e818b03265d706c7828e64b3953",
+      "src/components/editor/FabricSceneRenderer.tsx": "221d890cd47c90ee91744d83208ab7f7e0c6c1c3270e4c20cec041271dd72137",
+      "src/styles/globals.css": "76987469d48dd1d185acd776bdef92240c72f609ae8ee37e9f4aa355e9a915b4",
+      "tailwind.config.ts": "04578f94f1efde373b513a38845ea2a8502b420a724a7d04fd85ac2b5bea942a"
+    },
+    "adapters": ["src/components/quiz/ImagePickerDialog"]
+  }
+}

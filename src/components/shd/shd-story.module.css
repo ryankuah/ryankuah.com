@@ -1,0 +1,245 @@
+.story {
+  composes: story from "../web-story.module.css";
+  --shd-orange: #ff9b51;
+}
+.story a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.story button {
+  font: inherit;
+  cursor: pointer;
+}
+.comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto auto;
+  column-gap: 36px;
+}
+.chapter {
+  min-width: 0;
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+}
+.chapter h2 {
+  margin: 0;
+}
+.chapter > p {
+  margin: 16px 0 24px;
+}
+.example {
+  align-self: start;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #38404b;
+  background: #151b23;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.exampleHeader {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-bottom: 1px solid #38404b;
+  padding: 0 16px;
+  font-size: 11px;
+  color: #aeb8c4;
+}
+.exampleHeader button {
+  padding: 8px 0 8px 16px;
+  color: #c7d0dc;
+  background: transparent;
+  border: 0;
+}
+.demoBody {
+  padding: 16px;
+}
+.slots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 144px;
+  border: 1px dashed #59616c;
+  border-radius: 3px;
+  background: #10151c;
+  color: #d8dfe8;
+  position: relative;
+}
+.slotLabel {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-size: 10px;
+  color: #aeb8c4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.empty {
+  font-size: 11px;
+  margin-top: 12px;
+}
+.slot img {
+  width: 46px;
+  height: 46px;
+  margin: 12px 0 2px;
+}
+.slot strong,
+.brand strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 550;
+}
+.slot small,
+.brand small {
+  display: block;
+  font-size: 10px;
+  color: #aeb8c4;
+  margin-top: 3px;
+}
+.filled {
+  border-style: solid;
+  border-color: #85723a;
+  background: #211e16;
+}
+.itemArea {
+  min-height: 117px;
+  padding-top: 18px;
+}
+.areaLabel {
+  font-size: 10px;
+  display: block;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #aeb8c4;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 62px;
+  border: 1px solid #85723a;
+  border-left: 3px solid #d0ac4f;
+  border-radius: 3px;
+  padding: 6px 12px;
+  text-align: left;
+  color: #f0e4c1;
+  background: #272218;
+}
+.brandMark {
+  display: grid;
+  place-items: center;
+  flex: 0 0 40px;
+  height: 40px;
+  border: 1px solid #a89152;
+  font: 600 16px monospace;
+  color: #d0ac4f;
+}
+.draggable {
+  touch-action: none;
+  user-select: none;
+  cursor: grab !important;
+}
+.draggable:active {
+  cursor: grabbing !important;
+}
+.grip {
+  margin-left: auto;
+  font-size: 24px;
+  color: #b6a579;
+}
+.active {
+  border: 1px solid var(--shd-orange);
+  box-shadow: inset 0 0 0 1px var(--shd-orange);
+  background: #34271b;
+}
+.brandDialog {
+  margin: auto;
+  width: min(400px, calc(100vw - 32px));
+  padding: 22px;
+  color: #e6edf3;
+  background: #151b23;
+  border: 1px solid #59616c;
+  border-radius: 6px;
+  box-shadow: 0 24px 80px #0009;
+}
+.brandDialog::backdrop {
+  background: #0009;
+}
+.dialogHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.dialogHeading h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+.dialogHeading button {
+  border: 0;
+  background: transparent;
+  color: #aeb8c4;
+  padding: 4px 8px;
+  font-size: 24px;
+}
+.ghost {
+  position: fixed;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
+    Arial, sans-serif;
+  width: 190px;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 12px 30px #0008;
+}
+.next {
+  max-width: var(--story-copy-width);
+  margin-top: 36px;
+}
+@media (max-width: 850px) {
+  .comparison {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 40px;
+  }
+  .chapter {
+    display: flex;
+    flex-direction: column;
+    grid-row: auto;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .slot {
+    transition:
+      border-color 150ms,
+      background 150ms;
+  }
+}
+
+.threeChapter {
+  margin-top: var(--story-gap);
+  padding-top: var(--story-inset);
+  border-top: 1px solid #30363d;
+}
+.threeChapter h2 {
+  margin: 0 0 16px;
+}
+.threeChapter > p {
+  max-width: var(--story-copy-width);
+  margin: 20px 0 0;
+}

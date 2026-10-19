@@ -1,0 +1,91 @@
+.example {
+  position: relative;
+  margin-top: 24px;
+  background: #050607;
+  overflow: hidden;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+}
+.poster {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #000;
+  text-align: left;
+  color: #e6edf3;
+}
+.poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.6;
+  object-fit: cover;
+}
+.scene {
+  width: 100%;
+  aspect-ratio: 1.6;
+}
+.scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.sceneButton {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.sceneButton:disabled {
+  cursor: default;
+}
+.sceneButton:focus-visible {
+  outline: 2px solid #ff9b51;
+  outline-offset: -3px;
+}
+.loading {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #aeb8c4;
+  font-size: 13px;
+}
+.scene + .loading {
+  position: absolute;
+  inset: 0;
+  background: #050607;
+}
+.controls {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  display: flex;
+  gap: 8px;
+}
+.controls button,
+.loading button {
+  border: 1px solid #59616c;
+  background: #151b23;
+  color: #e6edf3;
+  padding: 10px 16px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+.controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+@media (max-width: 600px) {
+  .scene,
+  .poster img {
+    aspect-ratio: 1;
+  }
+  .controls {
+    bottom: 16px;
+    left: 16px;
+  }
+}

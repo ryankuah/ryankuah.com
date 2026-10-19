@@ -1,0 +1,137 @@
+.story {
+  composes: story from "../web-story.module.css";
+  --vv-accent: #a99ae8;
+  animation: arrive 350ms ease-out both;
+}
+.chapter {
+  padding-top: var(--story-inset);
+  scroll-margin-top: 26px;
+}
+.chapter + .chapter {
+  margin-top: var(--story-gap);
+  border-top: 1px solid #30363d;
+}
+.chapter:first-child {
+  padding-top: 0;
+}
+.chapterCopy {
+  max-width: var(--story-copy-width);
+  margin-bottom: 30px;
+}
+.chapterNumber {
+  display: block;
+  margin-bottom: 12px;
+  font:
+    11px ui-monospace,
+    monospace;
+  color: var(--vv-accent);
+}
+.chapterCopy p {
+  margin-top: 18px;
+}
+.historicalExample {
+  min-width: 0;
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+}
+.exampleDate {
+  margin-bottom: 12px;
+  color: var(--story-muted);
+  font-size: 12px;
+}
+.historicalFrame {
+  position: relative;
+  width: 100%;
+  /* Dropdown focus must not scroll the scaled iframe's outer wrapper. */
+  overflow: clip;
+  border-radius: 8px;
+  background: #e2e8f0;
+}
+.historicalFrame iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border: 0;
+  max-width: none;
+  transform-origin: top left;
+}
+.caption {
+  font-size: 11px;
+  color: #98a4af;
+  max-width: 560px;
+  margin: 14px auto 20px;
+  line-height: 1.7;
+}
+.storyDetail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+  margin-top: 52px;
+}
+.storyDetail:has(> :only-child) {
+  display: block;
+  max-width: var(--story-copy-width);
+}
+.detailCopy h3 {
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+.detailCopy p {
+  margin-top: 16px;
+}
+.referenceLink {
+  display: inline-block;
+  color: var(--story-muted);
+  font-size: 11px;
+  margin-top: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.closing {
+  margin-top: 40px;
+  max-width: 650px;
+}
+.closing ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  list-style: none;
+  padding: 0;
+  margin-top: 26px;
+  font-size: 11px;
+  color: #8e85aa;
+}
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 700px) {
+  .chapter {
+    padding-top: 38px;
+  }
+  .chapter + .chapter {
+    margin-top: 44px;
+  }
+  .chapterCopy p,
+  .detailCopy p {
+    font-size: 13px;
+  }
+  .storyDetail {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    margin-top: 38px;
+  }
+  .exampleDate {
+    font-size: 10px;
+  }
+}

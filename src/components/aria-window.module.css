@@ -1,0 +1,469 @@
+.browser {
+  --bezel: 5px;
+  --frame: #344744;
+  --accent: #b3d3c3;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  padding: var(--bezel);
+  background: var(--frame);
+  color: #eee9df;
+  transition:
+    padding 300ms ease,
+    background-color 300ms ease;
+}
+.browser[data-browser-theme="arc"] {
+  --bezel: 12px;
+  --frame: #655b7b;
+  --accent: #d4c4ed;
+}
+.browser[data-browser-theme="chrome"] {
+  --bezel: 0px;
+  --frame: #292b30;
+  --accent: #bdd1f6;
+}
+/* Keep the page opaque while the slim frame refracts the desktop behind it. */
+.browser:not([data-browser-theme="chrome"]):not([data-browser-theme="safari"]) {
+  background:
+    linear-gradient(135deg, #ffffff38, #ffffff05 28%, #ffffff00 60%, #d3eee629),
+    color-mix(in srgb, var(--frame) 35%, transparent);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 #ffffff80,
+    inset 1px 0 0 #ffffff30,
+    inset -1px -1px 0 #e0fff04d;
+}
+.browser:not([data-browser-theme="chrome"]):not([data-browser-theme="safari"])
+  .page {
+  border-color: #e8fff238;
+  box-shadow:
+    0 0 0 1px #09171444,
+    0 2px 8px #0003;
+}
+.page {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #ffffff13;
+  border-radius: 9px;
+  background: #182227;
+}
+.readingPane {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: clamp(34px, 6cqi, 52px) clamp(24px, 6cqi, 58px);
+}
+.article {
+  max-width: 64ch;
+  margin-inline: auto;
+  overflow-wrap: anywhere;
+  animation: arrive 220ms ease both;
+}
+.intro {
+  margin-bottom: 26px;
+}
+.icon {
+  margin-bottom: 22px;
+  border-radius: 12px;
+}
+.eyebrow {
+  display: block;
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+}
+.intro h2 {
+  margin: 14px 0 0;
+  font-size: clamp(30px, 5.4cqi, 44px);
+  text-wrap: balance;
+}
+.lead {
+  margin-top: 16px;
+  color: #d3ddd7;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.prose {
+  color: #bdcdc4;
+  font-size: clamp(13px, calc(12px + 0.4cqi), 15px);
+  line-height: 1.85;
+}
+.prose p + p {
+  margin-top: 20px;
+}
+.begin {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 32px;
+  text-align: left;
+  color: var(--accent);
+  font-size: clamp(16px, 2.8cqi, 20px);
+  line-height: 1.6;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+.begin:hover {
+  color: #fff;
+}
+.sidebarReveal {
+  position: absolute;
+  inset: var(--bezel) auto var(--bezel) var(--bezel);
+  width: 15px;
+  z-index: 5;
+}
+.sidebarToggle {
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--accent);
+}
+.sidebarToggle svg {
+  display: block;
+  margin: auto;
+  opacity: 0.7;
+}
+.sidebarToggle:focus-visible {
+  outline-offset: -3px;
+}
+.sidebar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: min(252px, calc(100cqi - 24px));
+  padding: 8px 10px 14px;
+  overflow: auto;
+  border: 1px solid #ffffff1c;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, #ffffff20, #ffffff03 55%, #d3eee610),
+    color-mix(in srgb, var(--frame) 78%, transparent);
+  backdrop-filter: blur(28px) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 #ffffff45,
+    14px 0 32px #0003;
+  transform: translateX(calc(-100% - 14px));
+  visibility: hidden;
+  transition:
+    transform 180ms ease,
+    visibility 180ms;
+}
+.sidebar[data-open="true"] {
+  transform: translateX(0);
+  visibility: visible;
+}
+.sidebar [data-window-titlebar] {
+  min-height: 32px;
+  height: 32px;
+  margin: 0 -4px 12px;
+  border: 0;
+  background: transparent;
+}
+.sidebar [data-window-controls] {
+  padding: 0 8px 0 38px;
+}
+.sidebar [data-window-drag-handle] {
+  left: 120px;
+  right: 0;
+  padding-right: 0;
+}
+.sidebar [data-window-drag-handle] span {
+  display: none;
+}
+.sidebarLabel {
+  margin: 8px 10px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #d3ddd7;
+}
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tabs button {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 10px;
+  border-radius: 6px;
+  text-align: left;
+  color: #dae1dc;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.tabs button:hover,
+.tabs button[aria-selected="true"] {
+  background: #ffffff14;
+  color: #fff;
+}
+.tabMark {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+.sidebarFoot {
+  margin-top: auto;
+  padding: 24px 10px 0;
+  color: #d3ddd7;
+  font-size: 10px;
+  line-height: 1.8;
+}
+.sidebarFoot span {
+  opacity: 0.7;
+}
+.chromeHeader {
+  flex-shrink: 0;
+  min-width: 0;
+}
+.chromeTop {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  padding-top: 6px;
+}
+.chromeControls {
+  width: 108px;
+  flex-shrink: 0;
+}
+.chromeControls [data-window-titlebar] {
+  height: 36px;
+  background: transparent;
+  border: 0;
+}
+.chromeControls [data-window-controls] {
+  gap: 7px;
+  padding-inline: 12px;
+}
+.chromeControls [data-window-drag-handle] {
+  inset: 0 0 0 80px;
+  padding: 0;
+}
+.chromeControls [data-window-drag-handle] span {
+  display: none;
+}
+.chromeTop .tabs {
+  flex: 1;
+  min-width: 0;
+  flex-direction: row;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  padding: 0 8px;
+}
+.chromeTop .tabs button {
+  flex: 0 0 auto;
+  border-radius: 9px 9px 0 0;
+  padding: 10px 14px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.chromeTop .tabs button[aria-selected="true"] {
+  background: #41444b;
+}
+.chromeTop .tabMark {
+  display: none;
+}
+.addressRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 8px 12px;
+  background: #41444b;
+}
+.address {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+  border-radius: 20px;
+  padding: 7px 14px;
+  background: #292b30;
+  color: #d5d8df;
+  font-size: 11px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.browser[data-browser-theme="chrome"] .page {
+  border-radius: 0;
+  border: 0;
+}
+@container app-window (max-width: 480px) {
+  .browser[data-browser-theme="arc"] {
+    --bezel: 8px;
+  }
+  .readingPane {
+    padding: 42px 22px 28px;
+  }
+  .chromeControls {
+    width: 90px;
+  }
+  .sidebarToggle {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+  }
+  .sidebarToggle svg {
+    opacity: 0.9;
+  }
+}
+@media (hover: none) {
+  .sidebarToggle {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+  }
+  .sidebarToggle svg {
+    opacity: 0.9;
+  }
+}
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.browser[data-browser-theme="dia"] {
+  --bezel: 12px;
+  --frame: #e5c760;
+  --accent: #5e4c16;
+}
+.browser[data-browser-theme="dia"] .page {
+  border-color: #b49b4133;
+}
+.browser[data-browser-theme="dia"]
+  :is(.sidebarLabel, .sidebarFoot, .tabs button) {
+  color: #423720;
+}
+.browser[data-browser-theme="dia"] .tabs button:hover,
+.browser[data-browser-theme="dia"] .tabs button[aria-selected="true"] {
+  color: #241e10;
+  background: #66501715;
+}
+.browser[data-browser-theme="safari"] {
+  --bezel: 0px;
+  --frame: #dfe2e7;
+  --accent: #36658e;
+  color: #2e3640;
+}
+.browser[data-browser-theme="safari"] .page {
+  background: #fcfcfd;
+  border: 0;
+  border-radius: 0 0 8px 8px;
+}
+.browser[data-browser-theme="safari"] .prose {
+  color: #4f5863;
+}
+.browser[data-browser-theme="safari"] .begin:hover {
+  color: #183c5b;
+}
+.safariHeader {
+  flex-shrink: 0;
+  min-width: 0;
+  background: #dfe2e7;
+}
+.safariToolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  height: 52px;
+  padding-right: 22px;
+  border-bottom: 1px solid #c5cad2;
+}
+.safariAddress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  width: min(440px, 60%);
+  height: 30px;
+  margin-inline: auto;
+  border: 1px solid #c3c7cd;
+  border-radius: 7px;
+  background: #f4f5f6;
+  box-shadow: 0 1px 2px #00000006;
+  color: #536070;
+  font-size: 11px;
+}
+.safariAddress svg {
+  flex-shrink: 0;
+}
+.safariAddress span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.compass {
+  flex-shrink: 0;
+  margin-left: auto;
+  color: #7e8996;
+}
+.safariHeader .tabs {
+  flex-direction: row;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.safariHeader .tabs button {
+  flex: 1 0 auto;
+  padding: 10px 18px;
+  border-right: 1px solid #c5cad2;
+  border-radius: 0;
+  color: #646c76;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.safariHeader .tabs button[aria-selected="true"] {
+  background: #fcfcfd;
+  color: #273e54;
+}
+.safariHeader .tabs button:hover {
+  background: #edf0f3;
+  color: #273e54;
+}
+.safariHeader .tabMark {
+  display: none;
+}
+@container app-window (max-width: 480px) {
+  .browser[data-browser-theme="dia"] {
+    --bezel: 8px;
+  }
+  .safariToolbar {
+    gap: 6px;
+    padding-right: 10px;
+  }
+  .safariAddress {
+    flex: 1;
+    padding-inline: 7px;
+    font-size: 10px;
+  }
+  .compass {
+    display: none;
+  }
+}

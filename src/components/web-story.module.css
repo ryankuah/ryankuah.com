@@ -1,0 +1,25 @@
+.story {
+  --story-gap: clamp(36px, 5vw, 56px);
+  --story-inset: 32px;
+  --story-muted: #aeb8c4;
+  --story-copy-width: 760px;
+  min-width: 0;
+  color: #e6edf3;
+}
+.story :where(h2) {
+  font-family: inherit;
+  font-size: clamp(24px, 2.5vw, 30px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+.story :where(p) {
+  color: var(--story-muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+@media (max-width: 700px) {
+  .story :where(p) {
+    font-size: 13px;
+  }
+}

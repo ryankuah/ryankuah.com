@@ -1,0 +1,775 @@
+.menuBar {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  height: 38px;
+  padding: 0 25px;
+  border-bottom: 1px solid #ffffff0d;
+  background: #102024aa;
+  backdrop-filter: blur(20px);
+  font-size: 11px;
+}
+.menuBar button {
+  padding: 5px;
+}
+.menuBar h1 {
+  font: inherit;
+  letter-spacing: normal;
+}
+.menuStatus {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 10px;
+}
+.appIcon {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  border-radius: 10px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.appIcon[data-moved="true"] {
+  z-index: 1;
+}
+.appIcon[data-dragging="true"] {
+  z-index: 4;
+  cursor: grabbing;
+}
+.appIcon img {
+  -webkit-user-drag: none;
+}
+.appIcon > span:last-of-type {
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.4;
+  text-shadow: 0 1px 7px #000c;
+}
+.runningDot {
+  position: absolute;
+  top: -8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #e9d5ac;
+}
+.dockRegion {
+  position: absolute;
+  inset: auto 0 0;
+  height: 110px;
+  z-index: 50;
+  pointer-events: none;
+}
+.dock {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 50;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  padding: 12px;
+  transform: translateX(-50%);
+  border: 1px solid #dae9e233;
+  border-radius: 24px;
+  background: #bdd1c522;
+  box-shadow: 0 10px 45px #0005;
+  backdrop-filter: blur(24px);
+  pointer-events: auto;
+}
+.dockTooltip {
+  pointer-events: none;
+  position: absolute;
+  bottom: calc(100% + 25px);
+  left: 50%;
+  padding: 5px 10px;
+  transform: translateX(-50%);
+  border-radius: 7px;
+  background: #20302eeb;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.dock a:hover .dockTooltip,
+.dock a:focus-visible .dockTooltip {
+  opacity: 1;
+}
+.window {
+  --window-width: min(850px, calc(100vw - 28px));
+  --window-height: min(560px, calc(100svh - 210px));
+  position: absolute;
+  top: clamp(48px, var(--window-y), calc(100% - var(--window-height) - 96px));
+  left: clamp(8px, var(--window-x), calc(100% - var(--window-width) - 8px));
+  display: flex;
+  width: var(--window-width);
+  height: var(--window-height);
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #c9d9d42c;
+  border-radius: 13px;
+  background: #172126;
+  box-shadow: 0 18px 70px #0006;
+  color: #e4e7e3;
+  animation: windowAppear 200ms ease-out;
+  transition:
+    box-shadow 150ms,
+    border-color 150ms;
+}
+.window[hidden] {
+  display: none;
+}
+.window[data-active="true"] {
+  border-color: #dce5df55;
+  box-shadow:
+    0 28px 110px #000a,
+    0 0 0 1px #0004;
+}
+
+.window[data-app="aria"] {
+  background: transparent;
+  border-color: #e7f3ee66;
+}
+
+.window[data-app="forza"] {
+  background: #171717;
+}
+.window[data-app="shd-app"] {
+  --window-width: min(420px, calc(100vw - 28px));
+  --window-height: min(580px, calc(100svh - 144px));
+  background: #0d1117;
+  color: #e6edf3;
+  border-color: #30363d;
+}
+.window[data-app="shd-app"] .titlebar {
+  background: #161b22;
+  border-bottom-color: #30363d;
+}
+.window[data-app="trash"] {
+  --window-width: min(600px, calc(100vw - 28px));
+  --window-height: min(380px, calc(100svh - 210px));
+}
+.window[data-app="minecraft"] {
+  --window-width: min(800px, calc(100vw - 28px));
+  --window-height: min(720px, calc(100svh - 160px));
+  background: #151718;
+}
+.window[data-maximized="true"] {
+  --window-width: calc(100vw - 16px);
+  --window-height: calc(100svh - 144px);
+  left: 8px;
+  top: 48px;
+}
+.window[data-dragging="true"],
+.window[data-resizing="true"] {
+  user-select: none;
+}
+.titlebar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 40px;
+  border-bottom: 1px solid #ffffff0d;
+  background: #ffffff06;
+}
+
+.window[data-app="minecraft"] .titlebar {
+  background: #24282b;
+}
+.windowControls {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 15px;
+}
+.windowControls button {
+  display: grid;
+  width: 13px;
+  height: 13px;
+  place-items: center;
+  border-radius: 50%;
+  color: transparent;
+  font:
+    12px/1 Arial,
+    sans-serif;
+}
+.windowControls:hover button,
+.windowControls button:focus-visible {
+  color: #241d19;
+}
+.close {
+  background: #df897e;
+}
+.minimize {
+  background: #e7b464;
+}
+.maximize {
+  background: #7ca389;
+}
+.dragHandle {
+  position: absolute;
+  inset: 0 42px 0 86px;
+  display: grid;
+  align-items: center;
+  padding-right: 44px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.dragHandle:focus-visible {
+  outline-offset: -4px;
+  border-radius: 5px;
+}
+.window[data-dragging="true"] .dragHandle {
+  cursor: grabbing;
+}
+.windowBody {
+  --window-content-padding: 28px;
+  container: app-window / size;
+  display: flex;
+  min-height: 0;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+.projectScroll {
+  min-height: 0;
+  width: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--window-content-padding);
+  scrollbar-width: thin;
+}
+.trash {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 2fr);
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  background: #1b2528;
+}
+.trashGrid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(90px, 1fr);
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ffffff12;
+  scrollbar-width: thin;
+}
+.trashGrid > button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  gap: 6px;
+  min-width: 0;
+  padding: 4px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+.trashGrid > button:hover,
+.trashGrid > button:focus-visible {
+  background: #ffffff08;
+}
+.trashGrid > button[aria-pressed="true"] {
+  background: #c4e5d513;
+  box-shadow: inset 0 0 0 1px #c4e5d524;
+}
+.trashGrid > button > span:first-child {
+  width: clamp(32px, 14cqh, 56px);
+  height: clamp(32px, 14cqh, 56px);
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+.trashGrid > button > span:last-child {
+  font-size: 11px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.trashGrid img {
+  -webkit-user-drag: none;
+}
+.trashDetails {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  color: #c0cdc6;
+  text-align: left;
+}
+.trashDetails:focus-visible {
+  outline-offset: -3px;
+}
+.trashDetailsText {
+  padding: 20px 24px;
+  font: 12px/1.8 var(--font-sans);
+}
+.trashDetails h3 {
+  margin-bottom: 12px;
+  color: #eee0c9;
+  font: 500 15px var(--font-sans);
+}
+.trashDetailsText p + p {
+  margin-top: 12px;
+}
+.trashSkills {
+  color: #92aaa0;
+  font-size: 10px;
+}
+.sidebarFoot {
+  margin-top: auto;
+  padding: 24px 10px 6px;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #c0c9c5;
+}
+.forza {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  background: #171717;
+  color: #e7e7e7;
+}
+.forzaSidebar {
+  display: flex;
+  flex: 0 0 172px;
+  flex-direction: column;
+  gap: 5px;
+  padding: 16px 10px 10px;
+  background: #242424;
+  border-right: 1px solid #ffffff0d;
+}
+.forzaBrand {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 0 3px 16px;
+}
+.forzaBrand strong {
+  font-size: 11px;
+}
+.forzaMain {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  flex-direction: column;
+  padding: var(--window-content-padding);
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.minecraft {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 0;
+  background: #1a2526;
+}
+.minecraftBackground {
+  z-index: -2;
+  object-fit: cover;
+  filter: brightness(0.82) saturate(0.85) blur(1px);
+  transform: scale(1.03);
+}
+.minecraft::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(#19222a18, #070d13a6);
+  content: "";
+}
+.minecraftMenu {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 38px;
+  padding: 24px 20px 48px;
+}
+.minecraftLogo {
+  width: min(460px, 100%);
+  text-align: center;
+}
+.minecraftLogo h2 {
+  line-height: 1;
+}
+.minecraftLogo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.minecraftLogo > span {
+  display: block;
+  margin-top: 13px;
+  color: #deded5;
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-shadow: 2px 2px #111;
+}
+.minecraftButtons {
+  display: grid;
+  gap: 10px;
+  width: min(330px, 100%);
+}
+.minecraftButton {
+  display: block;
+  min-height: 41px;
+  padding: 7px 16px;
+  border: 2px solid #141414;
+  border-radius: 0;
+  background: linear-gradient(#7c7e80, #67696d);
+  box-shadow:
+    inset 2px 2px #ffffff66,
+    inset -2px -3px #0006,
+    0 2px #0005;
+  color: #f2f2ef;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  text-align: center;
+  text-shadow: 2px 2px #252525;
+}
+.minecraftButton:hover,
+.minecraftButton:focus-visible {
+  background: linear-gradient(#8d9aaf, #75849c);
+  color: #fff7b8;
+  outline-offset: 2px;
+}
+.minecraftButton:active {
+  box-shadow:
+    inset 2px 2px #0005,
+    inset -2px -2px #ffffff44;
+}
+.minecraftFooter {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  left: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #ddd;
+  font:
+    9px/1.5 ui-monospace,
+    monospace;
+  text-shadow: 1px 1px #000;
+}
+.minecraftDetail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #111b21eb;
+}
+.minecraftDetail > .minecraftButton {
+  align-self: center;
+  margin: 12px 20px 20px;
+  width: min(330px, calc(100% - 40px));
+  flex-shrink: 0;
+}
+.minecraftShowcaseScroll {
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.minecraftDetail .projectScroll {
+  flex: 1;
+}
+@keyframes windowAppear {
+  from {
+    opacity: 0;
+    scale: 0.98;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@media (max-width: 700px) {
+  .menuBar {
+    gap: 14px;
+    padding: 0 15px;
+    font-size: 10px;
+  }
+  .menuStatus > svg {
+    display: none;
+  }
+  .appIcon > span:last-of-type {
+    font-size: 10px;
+  }
+}
+@container app-window (max-width: 700px) {
+  .projectScroll,
+  .forza,
+  .minecraft {
+    --window-content-padding: 20px;
+  }
+}
+@container app-window (max-width: 480px) {
+  .minecraftMenu {
+    gap: 30px;
+  }
+  .minecraftFooter {
+    font-size: 8px;
+  }
+}
+@media (min-width: 701px) and (max-height: 560px) {
+  .window[data-app][data-maximized="false"] {
+    --window-height: calc(100svh - 148px);
+  }
+  .dock {
+    bottom: 12px;
+    padding: 8px;
+    border-radius: 17px;
+  }
+  .appIcon > span:last-of-type {
+    font-size: 9px;
+  }
+}
+@container app-window (max-height: 300px) {
+  .minecraftMenu {
+    gap: 10px;
+    padding: 8px 16px 28px;
+  }
+  .minecraftLogo {
+    width: 180px;
+  }
+  .minecraftLogo > span {
+    margin-top: 4px;
+    font-size: 7px;
+  }
+  .minecraftButtons {
+    gap: 4px;
+  }
+  .minecraftButton {
+    min-height: 24px;
+    padding: 1px 12px;
+    font-size: 10px;
+  }
+}
+.resizeHandle {
+  position: absolute;
+  z-index: 6;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  touch-action: none;
+}
+.resizeHandle:focus-visible {
+  outline-offset: -2px;
+}
+.resizeHandle[data-edge="n"],
+.resizeHandle[data-edge="s"] {
+  left: 12px;
+  right: 12px;
+  height: 6px;
+  cursor: ns-resize;
+}
+.resizeHandle[data-edge="n"] {
+  top: 0;
+}
+.resizeHandle[data-edge="s"] {
+  bottom: 0;
+}
+.resizeHandle[data-edge="e"],
+.resizeHandle[data-edge="w"] {
+  top: 12px;
+  bottom: 12px;
+  width: 6px;
+  cursor: ew-resize;
+}
+.resizeHandle[data-edge="e"] {
+  right: 0;
+}
+.resizeHandle[data-edge="w"] {
+  left: 0;
+}
+.resizeHandle[data-edge="nw"],
+.resizeHandle[data-edge="ne"],
+.resizeHandle[data-edge="sw"],
+.resizeHandle[data-edge="se"] {
+  width: 12px;
+  height: 12px;
+  z-index: 7;
+}
+.resizeHandle[data-edge="nw"] {
+  top: 0;
+  left: 0;
+  cursor: nwse-resize;
+}
+.resizeHandle[data-edge="ne"] {
+  top: 0;
+  right: 0;
+  cursor: nesw-resize;
+}
+.resizeHandle[data-edge="sw"] {
+  bottom: 0;
+  left: 0;
+  cursor: nesw-resize;
+}
+.resizeHandle[data-edge="se"] {
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+}
+.dragHandle span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@container app-window (max-height: 220px) {
+  .minecraftMenu {
+    gap: 6px;
+    padding: 6px 16px 22px;
+  }
+  .minecraftLogo {
+    width: 140px;
+  }
+  .minecraftLogo > span {
+    margin-top: 0;
+  }
+}
+
+.desktopIcons > [data-app-id="minecraft"] {
+  grid-column: -2 / -1;
+}
+
+/* The slim Aria bezel shares the titlebar's window gestures. Keep the outer
+   three pixels and corners available for resizing. */
+.ariaTopBezel {
+  position: absolute;
+  top: 3px;
+  right: 12px;
+  left: 12px;
+  height: 9px;
+  z-index: 8;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.ariaTopBezel:focus-visible {
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+.window[data-dragging="true"] .ariaTopBezel {
+  cursor: grabbing;
+}
+
+.forzaStack {
+  padding: 20px 10px;
+  border-top: 1px solid #ffffff0d;
+}
+.forzaStack > span {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #878787;
+}
+.forzaStack ul {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #b8b8b8;
+}
+.forzaIntro h2 {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.forzaIntro p {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #b8b8b8;
+}
+.forzaFeatures {
+  margin-top: 24px;
+}
+.forzaFeatures section {
+  padding: 16px 0;
+  border-top: 1px solid #ffffff0f;
+}
+.forzaFeatures h3 {
+  margin-bottom: 6px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #d5a77b;
+}
+.forzaFeatures p {
+  font-size: 12px;
+  line-height: 1.75;
+  color: #aaa;
+}
+.forzaFeatures p + p {
+  margin-top: 14px;
+}
+@container app-window (max-width: 700px) {
+  .forzaSidebar {
+    flex-basis: 132px;
+    padding: 14px 8px;
+  }
+  .forzaBrand {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline: 10px;
+  }
+}
+@container app-window (max-width: 480px) {
+  .forza {
+    flex-direction: column;
+  }
+  .forzaSidebar {
+    flex: 0 0 auto;
+    padding: 10px 16px;
+    border-right: 0;
+    border-bottom: 1px solid #ffffff0d;
+  }
+  .forzaBrand {
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+  }
+  .forzaStack,
+  .forzaSidebar .sidebarFoot {
+    display: none;
+  }
+}
+
+/* Chrome's chapter tabs occupy the top strip; do not cover them with the bezel handle. */
+.window[data-app="aria"]:has(
+    [data-browser-theme="chrome"],
+    [data-browser-theme="safari"]
+  )
+  .ariaTopBezel {
+  height: 2px;
+}

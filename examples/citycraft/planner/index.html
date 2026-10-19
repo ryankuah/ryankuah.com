@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CityCraft Planner</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <aside class="panel">
+      <header>
+        <h1>CityCraft planner</h1>
+        <span id="status" class="status" hidden></span>
+      </header>
+      <div class="readout"><span id="cursor">Move over the map</span></div>
+      <label class="toggle"><input type="checkbox" id="grid" /> Chunk &amp; block grid</label>
+      <label class="toggle"><input type="checkbox" id="skyline" /> 3D heights</label>
+      <section id="selection" hidden>
+        <h2 id="selection-name"></h2>
+        <span id="selection-id" hidden></span>
+        <p id="selection-json" class="muted"></p>
+      </section>
+      <section id="issues" hidden></section>
+      <p class="muted small">1 block = 1 m · north is up (−z) · click a feature to inspect</p>
+    </aside>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

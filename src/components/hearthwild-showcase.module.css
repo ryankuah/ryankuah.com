@@ -1,0 +1,7 @@
+.map {
+  display: block;
+  width: 100%;
+  height: clamp(360px, 50svh, 500px);
+  border: 0;
+  background: #171a16;
+}

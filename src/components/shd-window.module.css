@@ -1,0 +1,228 @@
+/* Branding and palette from shdapp's connection-window renderer. */
+.app {
+  --primary: #ff6b35;
+  --primary-glow: #ff6b3533;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  background: #0d1117;
+  color: #e6edf3;
+  font-size: 16px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+}
+.app svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.scroll {
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #30363d transparent;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  width: 100%;
+  max-width: 370px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.brand {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.brandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff6b35, #e55a28);
+  box-shadow: 0 4px 16px var(--primary-glow);
+}
+.brandIcon svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+.brand h2 {
+  font-family: inherit;
+  font-size: 21.6px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  color: #e6edf3;
+}
+.brand h2 span {
+  color: var(--primary);
+}
+.brand p {
+  font-size: 12.48px;
+  color: #6e7681;
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+.description {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  background: #161b22;
+}
+.intro {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #e6edf3;
+}
+.explanation {
+  margin-top: 12px;
+  color: #a6afb9;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 16px;
+}
+.actions button {
+  flex: 1;
+  min-height: 40px;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background: #21262d;
+  color: #e6edf3;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.actions button:hover {
+  border-color: var(--primary);
+}
+.actions button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.actions .startButton {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #160b06;
+}
+.actions button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.desktopOverlay {
+  --primary: #ff6b35;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  user-select: none;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+}
+.teamPanel {
+  position: absolute;
+  top: 64px;
+  left: 20px;
+  width: min(230px, calc(100vw - 40px));
+}
+/* Click-through ready rows and centered countdown, like the native overlay. */
+.agentList {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.agentRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid #30363d99;
+  border-radius: 6px;
+  background: #161b22e6;
+  box-shadow: inset 3px 0 0 currentColor;
+  color: #8b949e;
+  font-size: 13px;
+  backdrop-filter: blur(8px);
+  animation: agentJoin 180ms ease-out;
+  transition:
+    color 180ms,
+    border-color 180ms;
+}
+.agentRow[data-ready="true"] {
+  border-color: #3fb95059;
+  color: #3fb950;
+}
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  transition: box-shadow 180ms;
+}
+.agentRow[data-ready="true"] .statusDot {
+  box-shadow: 0 0 8px #3fb95080;
+}
+@keyframes agentJoin {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.agentStatus {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.countdown {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--primary);
+}
+.countdown strong {
+  font-size: clamp(64px, 12vw, 96px);
+  font-weight: 900;
+  line-height: 1;
+  text-shadow:
+    0 2px 6px #000,
+    0 0 40px #ff6b3599;
+}
+.countdown span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px #000;
+}

@@ -1,0 +1,455 @@
+.site {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  background: var(--paper);
+  color: var(--ink);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color-scheme: dark;
+  --paper: #0d1117;
+  --header: #010409;
+  --rail: #161b22;
+  --ink: #e6edf3;
+  --muted: #8b949e;
+  --rule: #30363d;
+  --accent: #58a6ff;
+  --active: #21262d;
+  --content-width: 1100px;
+  --page-gutter: max(5%, calc((100% - var(--content-width)) / 2));
+}
+.site :is(a, button, input):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+.site h1:focus {
+  outline: none;
+}
+.drawer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  overflow: hidden;
+}
+.drawer::backdrop {
+  background: #0008;
+}
+.drawer[open] .sidebar {
+  animation: drawer-enter 180ms ease-out;
+}
+.sidebar {
+  width: min(220px, calc(100% - 32px));
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 12px;
+  border-right: 1px solid var(--rule);
+  background: #000;
+}
+.navigation {
+  display: grid;
+  gap: 7px;
+  margin-top: 30px;
+}
+.navigation a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  padding: 13px 14px;
+  border-radius: 5px;
+  color: var(--muted);
+  transition:
+    background 180ms,
+    color 180ms;
+}
+.navigation a:hover {
+  background: var(--active);
+  color: var(--ink);
+}
+.navigation a[aria-current] {
+  background: var(--active);
+  color: var(--accent);
+  font-weight: 650;
+}
+.sidebarBottom {
+  margin-top: auto;
+  padding: 30px 12px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.projectCount {
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+.workspace {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) var(--paper);
+}
+.topbar {
+  min-height: 76px;
+  padding: 16px var(--page-gutter);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--header);
+}
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.closeButton {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 180ms;
+}
+.closeButton:hover {
+  color: var(--ink);
+}
+.menuButton {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 180ms,
+    color 180ms;
+}
+.menuButton:hover {
+  background: var(--active);
+  color: var(--ink);
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+.owner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.owner:hover span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.breadcrumb strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+.slash {
+  color: var(--muted);
+}
+.content {
+  width: 90%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding-top: 43px;
+  animation: content-enter 320ms ease both;
+}
+.site h1 {
+  font-family: inherit;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 11px 17px;
+  margin-top: 27px;
+  color: var(--paper);
+  background: var(--accent);
+  font-size: 11px;
+}
+.action svg {
+  transition: translate 180ms;
+}
+a.action:hover svg {
+  translate: 4px 0;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 27px 0;
+  margin-top: 55px;
+  border-top: 1px solid var(--rule);
+  font-size: 10px;
+  color: var(--muted);
+}
+.repositories {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.repoToolbar {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  background: var(--rail);
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 11px;
+}
+.repoToolbar > span:last-child {
+  margin-left: auto;
+  color: var(--muted);
+}
+.repository {
+  display: block;
+  padding: 25px 25px 24px;
+  border-bottom: 1px solid var(--rule);
+  transition: background 180ms;
+}
+.repository:last-child {
+  border-bottom: 0;
+}
+.repository:hover {
+  background: var(--rail);
+}
+.repository[aria-disabled="true"] {
+  cursor: default;
+}
+.repository[aria-disabled="true"]:hover {
+  background: transparent;
+}
+.repository[aria-disabled="true"] h2 {
+  color: var(--muted);
+}
+.comingSoon {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 11px;
+}
+.repoTitle {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.repoTitle h2 {
+  font-family: inherit;
+  font-size: 19px;
+  color: var(--accent);
+  letter-spacing: normal;
+}
+.repoArrow {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--muted);
+}
+.repository > p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 12px;
+  max-width: 80ch;
+}
+.repoSkills {
+  display: flex;
+  gap: 10px 20px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  font-size: 10px;
+  color: var(--accent);
+}
+.repoSkills > span:first-child::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3fb950;
+  margin-right: 7px;
+}
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.detail {
+  padding-bottom: 70px;
+}
+.detailIntro {
+  margin-bottom: 28px;
+}
+.projectDescription {
+  max-width: 820px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.detailIntro h1 {
+  margin: 0;
+}
+.detailBody {
+  min-width: 0;
+}
+.detailBody section + section {
+  margin-top: 32px;
+}
+.detailBody h2 {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+.detailBody p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+  margin-top: 14px;
+}
+.detailBody p:first-child {
+  margin-top: 0;
+}
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  list-style: none;
+  color: var(--accent);
+  font-size: 12px;
+}
+.readme {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.readmeHeader {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--rail);
+}
+.readmeContent {
+  padding: 32px;
+}
+@keyframes content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 700px) {
+  .topbar {
+    min-height: 68px;
+    gap: 12px;
+    font-size: 12px;
+  }
+  .breadcrumb {
+    gap: 9px;
+  }
+  .owner {
+    gap: 8px;
+  }
+  .owner img {
+    width: 28px;
+    height: 28px;
+  }
+  .content {
+    padding-top: 27px;
+  }
+  .site h1 {
+    font-size: 29px;
+  }
+  .repoToolbar {
+    padding: 13px;
+    gap: 8px;
+    font-size: 9px;
+  }
+  .repository {
+    padding: 22px 15px;
+  }
+  .repoTitle {
+    gap: 9px 10px;
+  }
+  .repoTitle h2 {
+    font-size: 17px;
+  }
+  .repoArrow {
+    display: none;
+  }
+  .repository > p {
+    font-size: 11px;
+  }
+  .readmeContent {
+    padding: 24px 20px;
+  }
+  .footer {
+    margin-top: 35px;
+  }
+}
+.favicon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.detailTitle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.detailTitle h1 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@keyframes drawer-enter {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

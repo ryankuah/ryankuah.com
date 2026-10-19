@@ -1,0 +1,665 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .ppt-transition-root {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    perspective: 1200px;
+    isolation: isolate;
+    pointer-events: none;
+  }
+
+  .ppt-transition-root > .ppt-transition-prev,
+  .ppt-transition-root > .ppt-transition-next,
+  .ppt-transition-piece {
+    will-change: transform, opacity, clip-path, filter;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    animation-duration: var(--ppt-transition-duration);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: forwards;
+  }
+
+  .ppt-transition-shadow {
+    opacity: 0;
+    animation-duration: var(--ppt-transition-duration);
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    background: linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.18),
+      rgba(15, 23, 42, 0.02) 24%,
+      rgba(15, 23, 42, 0) 60%
+    );
+  }
+
+  .ppt-effect-push.ppt-forward .ppt-transition-prev {
+    animation-name: ppt-push-prev-forward;
+  }
+  .ppt-effect-push.ppt-forward .ppt-transition-next {
+    animation-name: ppt-push-next-forward;
+  }
+  .ppt-effect-push.ppt-forward .ppt-transition-shadow {
+    animation-name: ppt-shadow-fade;
+  }
+  .ppt-effect-push.ppt-backward .ppt-transition-prev {
+    animation-name: ppt-push-prev-backward;
+  }
+  .ppt-effect-push.ppt-backward .ppt-transition-next {
+    animation-name: ppt-push-next-backward;
+  }
+  .ppt-effect-push.ppt-backward .ppt-transition-shadow {
+    animation-name: ppt-shadow-fade;
+  }
+
+  .ppt-effect-uncover.ppt-forward .ppt-transition-prev {
+    animation-name: ppt-uncover-prev-forward;
+  }
+  .ppt-effect-uncover.ppt-forward .ppt-transition-shadow {
+    animation-name: ppt-shadow-fade;
+  }
+  .ppt-effect-uncover.ppt-backward .ppt-transition-prev {
+    animation-name: ppt-uncover-prev-backward;
+  }
+  .ppt-effect-uncover.ppt-backward .ppt-transition-shadow {
+    animation-name: ppt-shadow-fade;
+  }
+
+  .ppt-effect-fade .ppt-transition-prev {
+    animation-name: ppt-fade-prev;
+  }
+  .ppt-effect-fade .ppt-transition-next {
+    animation-name: ppt-fade-next;
+  }
+
+  .ppt-effect-coverflow {
+    perspective: 1600px;
+  }
+  .ppt-effect-coverflow .ppt-transition-prev {
+    transform-origin: left center;
+    animation-name: ppt-coverflow-prev;
+  }
+  .ppt-effect-coverflow .ppt-transition-next {
+    transform-origin: right center;
+    animation-name: ppt-coverflow-next;
+  }
+  .ppt-effect-coverflow .ppt-transition-shadow {
+    animation-name: ppt-shadow-fade;
+  }
+
+  .ppt-effect-flip {
+    perspective: 1800px;
+  }
+  .ppt-effect-flip .ppt-transition-prev {
+    transform-origin: left center;
+    animation-name: ppt-flip-prev;
+  }
+  .ppt-effect-flip .ppt-transition-next {
+    transform-origin: right center;
+    animation-name: ppt-flip-next;
+  }
+  .ppt-effect-flip .ppt-transition-shadow {
+    animation-name: ppt-shadow-fade-strong;
+  }
+
+  .ppt-effect-cards .ppt-transition-prev {
+    animation-name: ppt-cards-prev;
+  }
+  .ppt-effect-cards .ppt-transition-next {
+    animation-name: ppt-cards-next;
+  }
+  .ppt-effect-cards .ppt-transition-shadow {
+    animation-name: ppt-shadow-fade;
+  }
+
+  .ppt-effect-peelOff .ppt-transition-prev {
+    transform-origin: 100% 100%;
+    animation-name: ppt-peel-off;
+  }
+  .ppt-effect-peelOff .ppt-transition-next {
+    animation-name: ppt-next-soft-reveal;
+  }
+  .ppt-effect-peelOff .ppt-transition-shadow {
+    animation-name: ppt-shadow-fade-strong;
+  }
+
+  .ppt-effect-curtains .ppt-curtain-left {
+    transform-origin: left center;
+    animation-name: ppt-curtain-left-open;
+  }
+  .ppt-effect-curtains .ppt-curtain-right {
+    transform-origin: right center;
+    animation-name: ppt-curtain-right-open;
+  }
+
+  .ppt-effect-drape .ppt-drape-panel {
+    transform-origin: top center;
+    animation-name: ppt-drape-drop;
+  }
+
+  .ppt-effect-wind .ppt-wind-strip {
+    transform-origin: left center;
+    animation-name: ppt-wind-strip;
+  }
+
+  .ppt-effect-prestige .ppt-transition-prev {
+    transform-origin: top center;
+    animation-name: ppt-prestige-lift;
+  }
+  .ppt-effect-prestige .ppt-transition-next {
+    animation-name: ppt-next-soft-reveal;
+  }
+  .ppt-effect-prestige .ppt-transition-shadow {
+    animation-name: ppt-shadow-fade-strong;
+  }
+
+  @keyframes ppt-push-prev-forward {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-100%, 0, 0); }
+  }
+  @keyframes ppt-push-next-forward {
+    from { transform: translate3d(100%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+  @keyframes ppt-push-prev-backward {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(100%, 0, 0); }
+  }
+  @keyframes ppt-push-next-backward {
+    from { transform: translate3d(-100%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  @keyframes ppt-uncover-prev-forward {
+    from { transform: translate3d(0, 0, 0); box-shadow: 0 0 0 rgba(0,0,0,0); }
+    to { transform: translate3d(-100%, 0, 0); box-shadow: 28px 0 48px rgba(15, 23, 42, 0.22); }
+  }
+  @keyframes ppt-uncover-prev-backward {
+    from { transform: translate3d(0, 0, 0); box-shadow: 0 0 0 rgba(0,0,0,0); }
+    to { transform: translate3d(100%, 0, 0); box-shadow: -28px 0 48px rgba(15, 23, 42, 0.22); }
+  }
+
+  @keyframes ppt-fade-prev {
+    from { opacity: 1; filter: brightness(1); }
+    to { opacity: 0; filter: brightness(0.94); }
+  }
+  @keyframes ppt-fade-next {
+    from { opacity: 0; filter: brightness(1.04); }
+    to { opacity: 1; filter: brightness(1); }
+  }
+
+  @keyframes ppt-coverflow-prev {
+    from {
+      transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
+      opacity: 1;
+      filter: brightness(1);
+    }
+    to {
+      transform: translate3d(-28%, 0, -140px) rotateY(48deg) scale(0.9);
+      opacity: 0.55;
+      filter: brightness(0.8);
+    }
+  }
+  @keyframes ppt-coverflow-next {
+    from {
+      transform: translate3d(28%, 0, -140px) rotateY(-48deg) scale(0.9);
+      opacity: 0.55;
+      filter: brightness(0.82);
+    }
+    to {
+      transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
+      opacity: 1;
+      filter: brightness(1);
+    }
+  }
+
+  @keyframes ppt-flip-prev {
+    from {
+      transform: rotateY(0deg);
+      opacity: 1;
+      filter: brightness(1);
+    }
+    to {
+      transform: rotateY(88deg);
+      opacity: 0.18;
+      filter: brightness(0.7);
+    }
+  }
+  @keyframes ppt-flip-next {
+    from {
+      transform: rotateY(-88deg);
+      opacity: 0.18;
+      filter: brightness(0.74);
+    }
+    to {
+      transform: rotateY(0deg);
+      opacity: 1;
+      filter: brightness(1);
+    }
+  }
+
+  @keyframes ppt-cards-prev {
+    from {
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: translate3d(-18%, -4%, -40px) rotate(-6deg) scale(0.96);
+      opacity: 0.2;
+    }
+  }
+  @keyframes ppt-cards-next {
+    from {
+      transform: translate3d(12%, 4%, -40px) rotate(5deg) scale(0.94);
+      opacity: 0.35;
+    }
+    to {
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes ppt-peel-off {
+    0% {
+      transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+      filter: brightness(1);
+      opacity: 1;
+    }
+    55% {
+      transform: translate3d(14%, -2%, 60px) rotateX(10deg) rotateY(-24deg) rotateZ(-5deg) scale(0.98);
+      filter: brightness(0.95);
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(42%, -8%, 180px) rotateX(22deg) rotateY(-68deg) rotateZ(-12deg) scale(0.88);
+      filter: brightness(0.82);
+      opacity: 0;
+    }
+  }
+
+  @keyframes ppt-curtain-left-open {
+    from {
+      transform: translate3d(0, 0, 0) skewY(0deg) scaleX(1);
+      filter: brightness(1);
+      box-shadow: inset -12px 0 18px rgba(15, 23, 42, 0.08);
+    }
+    to {
+      transform: translate3d(-102%, 0, 0) skewY(-1.5deg) scaleX(0.98);
+      filter: brightness(0.88);
+      box-shadow: inset -28px 0 28px rgba(15, 23, 42, 0.18);
+    }
+  }
+  @keyframes ppt-curtain-right-open {
+    from {
+      transform: translate3d(0, 0, 0) skewY(0deg) scaleX(1);
+      filter: brightness(1);
+      box-shadow: inset 12px 0 18px rgba(15, 23, 42, 0.08);
+    }
+    to {
+      transform: translate3d(102%, 0, 0) skewY(1.5deg) scaleX(0.98);
+      filter: brightness(0.88);
+      box-shadow: inset 28px 0 28px rgba(15, 23, 42, 0.18);
+    }
+  }
+
+  @keyframes ppt-drape-drop {
+    0% {
+      transform: translate3d(0, 0, 0) rotateX(0deg) skewX(0deg);
+      filter: brightness(1);
+    }
+    50% {
+      transform: translate3d(0, 12%, 36px) rotateX(-10deg) skewX(-1deg);
+      filter: brightness(0.92);
+    }
+    100% {
+      transform: translate3d(0, 110%, 60px) rotateX(-18deg) skewX(2deg);
+      filter: brightness(0.78);
+      opacity: 0;
+    }
+  }
+
+  @keyframes ppt-wind-strip {
+    0% {
+      transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(0deg);
+      opacity: 1;
+      filter: blur(0px);
+    }
+    60% {
+      transform: translate3d(40%, -5%, 26px) rotateZ(4deg) rotateY(-16deg);
+      opacity: 0.9;
+      filter: blur(0.5px);
+    }
+    100% {
+      transform: translate3d(125%, -14%, 60px) rotateZ(11deg) rotateY(-26deg);
+      opacity: 0;
+      filter: blur(1px);
+    }
+  }
+
+  @keyframes ppt-prestige-lift {
+    0% {
+      transform: translate3d(0, 0, 0) scaleY(1) rotateX(0deg);
+      clip-path: inset(0 0 0 0 round 0);
+      filter: brightness(1);
+    }
+    55% {
+      transform: translate3d(0, -32%, 50px) scaleY(0.92) rotateX(12deg);
+      clip-path: inset(0 0 18% 0 round 0 0 24px 24px);
+      filter: brightness(0.92);
+    }
+    100% {
+      transform: translate3d(0, -110%, 90px) scaleY(0.82) rotateX(24deg);
+      clip-path: inset(0 0 76% 0 round 0 0 32px 32px);
+      filter: brightness(0.82);
+      opacity: 0;
+    }
+  }
+
+  @keyframes ppt-next-soft-reveal {
+    from { transform: scale(1.03); opacity: 0.85; filter: brightness(0.94); }
+    to { transform: scale(1); opacity: 1; filter: brightness(1); }
+  }
+
+  @keyframes ppt-shadow-fade {
+    0% { opacity: 0; }
+    40% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes ppt-shadow-fade-strong {
+    0% { opacity: 0; }
+    35% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  .transition-option-preview {
+    position: relative;
+    height: 2.5rem;
+    width: 4.25rem;
+    overflow: hidden;
+    border-radius: 0.65rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.92));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    isolation: isolate;
+  }
+
+  .transition-preview-panel {
+    height: 7rem;
+    width: 10.5rem;
+    border-radius: 1rem;
+  }
+
+  .transition-option-surface,
+  .transition-option-piece {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    will-change: transform, opacity, clip-path, filter;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  .transition-option-next {
+    background:
+      linear-gradient(135deg, rgba(96, 165, 250, 0.95), rgba(59, 130, 246, 0.78));
+  }
+
+  .transition-option-next::after {
+    content: "";
+    position: absolute;
+    inset: 0.55rem 0.9rem auto auto;
+    height: 0.7rem;
+    width: 0.7rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .transition-option-prev {
+    background:
+      linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(51, 65, 85, 0.82));
+  }
+
+  .transition-option-prev::before {
+    content: "";
+    position: absolute;
+    inset: 0.6rem auto auto 0.65rem;
+    height: 0.45rem;
+    width: 1.65rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  .transition-option-prev::after {
+    content: "";
+    position: absolute;
+    inset: auto auto 0.55rem 0.65rem;
+    height: 0.32rem;
+    width: 2.3rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .transition-option-none .transition-option-prev {
+    animation: none;
+    opacity: 0.9;
+  }
+
+  .transition-option-uncover .transition-option-prev {
+    animation-name: transition-option-uncover-prev;
+  }
+
+  .transition-option-peelOff .transition-option-prev {
+    transform-origin: 100% 100%;
+    animation-name: transition-option-peel-prev;
+  }
+
+  .transition-option-prestige .transition-option-prev {
+    transform-origin: top center;
+    animation-name: transition-option-prestige-prev;
+  }
+
+  .transition-option-fade .transition-option-prev {
+    animation-name: transition-option-fade-prev;
+  }
+
+  .transition-option-fade .transition-option-next {
+    animation-name: transition-option-fade-next;
+  }
+
+  .transition-option-cards .transition-option-prev {
+    animation-name: transition-option-cards-prev;
+  }
+
+  .transition-option-cards .transition-option-next {
+    animation-name: transition-option-cards-next;
+  }
+
+  .transition-option-curtain-left,
+  .transition-option-curtain-right,
+  .transition-option-wind-strip,
+  .transition-option-drape-panel {
+    background:
+      linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(51, 65, 85, 0.82));
+  }
+
+  .transition-option-curtain-left {
+    clip-path: inset(0 50% 0 0);
+    transform-origin: left center;
+    animation-name: transition-option-curtain-left;
+  }
+
+  .transition-option-curtain-right {
+    clip-path: inset(0 0 0 50%);
+    transform-origin: right center;
+    animation-name: transition-option-curtain-right;
+  }
+
+  .transition-option-wind-strip {
+    width: 25%;
+    inset: 0 auto 0 0;
+    animation-name: transition-option-wind-strip;
+  }
+
+  .transition-option-drape-panel {
+    width: 25%;
+    inset: 0 auto 0 0;
+    transform-origin: top center;
+    animation-name: transition-option-drape-panel;
+  }
+
+  @keyframes transition-option-uncover-prev {
+    0%, 18% { transform: translateX(0); }
+    68%, 100% { transform: translateX(-112%); }
+  }
+
+  @keyframes transition-option-peel-prev {
+    0%, 18% {
+      transform: translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg) scale(1);
+      opacity: 1;
+    }
+    70%, 100% {
+      transform: translate3d(36%, -6%, 0) rotateY(-72deg) rotateZ(-10deg) scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  @keyframes transition-option-curtain-left {
+    0%, 18% { transform: translateX(0) skewY(0deg); }
+    70%, 100% { transform: translateX(-105%) skewY(-2deg); }
+  }
+
+  @keyframes transition-option-curtain-right {
+    0%, 18% { transform: translateX(0) skewY(0deg); }
+    70%, 100% { transform: translateX(105%) skewY(2deg); }
+  }
+
+  @keyframes transition-option-drape-panel {
+    0%, 18% {
+      transform: translateY(0) rotateX(0deg);
+      opacity: 1;
+    }
+    70%, 100% {
+      transform: translateY(115%) rotateX(-20deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes transition-option-wind-strip {
+    0%, 18% {
+      transform: translate3d(0, 0, 0) rotateZ(0deg);
+      opacity: 1;
+    }
+    70%, 100% {
+      transform: translate3d(130%, -18%, 0) rotateZ(10deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes transition-option-prestige-prev {
+    0%, 18% {
+      transform: translateY(0) scaleY(1);
+      clip-path: inset(0 0 0 0 round 0);
+      opacity: 1;
+    }
+    70%, 100% {
+      transform: translateY(-112%) scaleY(0.8);
+      clip-path: inset(0 0 74% 0 round 0 0 12px 12px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes transition-option-fade-prev {
+    0%, 18% { opacity: 1; }
+    70%, 100% { opacity: 0; }
+  }
+
+  @keyframes transition-option-fade-next {
+    0%, 18% { opacity: 0.38; }
+    70%, 100% { opacity: 1; }
+  }
+
+  @keyframes transition-option-cards-prev {
+    0%, 18% {
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+      opacity: 1;
+    }
+    70%, 100% {
+      transform: translate3d(-16%, -8%, 0) rotate(-8deg) scale(0.94);
+      opacity: 0.18;
+    }
+  }
+
+  @keyframes transition-option-cards-next {
+    0%, 18% {
+      transform: translate3d(14%, 8%, 0) rotate(7deg) scale(0.92);
+      opacity: 0.4;
+    }
+    70%, 100% {
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+      opacity: 1;
+    }
+  }
+}
