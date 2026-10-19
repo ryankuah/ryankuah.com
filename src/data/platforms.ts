@@ -3,7 +3,7 @@ import { projects } from "./projects";
 export const platforms = {
   web: {
     title: "Web development",
-    projectIds: ["visionverse", "shd", "minluyen"],
+    projectIds: ["shd", "visionverse", "minluyen"],
   },
   mobile: {
     title: "Mobile development",

@@ -149,11 +149,20 @@ export function DesktopAppIcon({
         });
       }}
     >
-      <ProjectIcon id={id} size="desktop" />
+      <span
+        className={styles.appArtwork}
+        data-coming-soon={comingSoon || undefined}
+      >
+        <span className={styles.appImage}>
+          <ProjectIcon id={id} size="desktop" />
+        </span>
+        {comingSoon && (
+          <span className={styles.comingSoonBanner} aria-hidden="true">
+            Coming soon
+          </span>
+        )}
+      </span>
       <span>{name}</span>
-      {comingSoon && (
-        <small className="text-[10px] text-[#c0cac7]">Coming soon</small>
-      )}
       {running && <i className={styles.runningDot} aria-label="Running" />}
     </button>
   );
