@@ -31,7 +31,7 @@ Aria and SHD Network are currently available. Other project entries are marked *
 - A layered forest opening with a separately animated fire, rising embers, and firelight revealing the seated character.
 - An introduction with coloured links to `/web`, `/mobile`, and `/desktop`.
 - Web: an Aria-inspired glass address prompt types `ryankuah.com/web`, then opens a repository-style project list.
-- Mobile: the forest contracts into a phone wallpaper with a live clock and a Coming soon lock screen.
+- Mobile: the forest contracts into a locked iPhone with a forgotten-password message.
 - Desktop: an automatic decorative password sequence unlocks a desktop with project icons, a dock, and app windows. No credentials are collected.
 - The scene persists across routes. There is no page scrolling; long project details can scroll inside an app window.
 - The full inventory remains in `src/data/projects.ts`; platform membership lives in `src/data/platforms.ts`.
